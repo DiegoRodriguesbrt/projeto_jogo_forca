@@ -61,7 +61,7 @@ def sorteio_palavra():
 # Essa função formata o input dos chutes para não receber caractere especial, mais de 1 carectere ou números.
 def formata_chute_input():
     chute = input("Qual letra? ").strip().upper()
-    if len(chute) != 1 or re.match("\d",chute):
+    if len(chute) != 1 or re.match("\d",chute) or re.match("\W",chute):
         return 0
     else:
         return chute

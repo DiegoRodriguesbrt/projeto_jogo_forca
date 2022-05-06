@@ -58,9 +58,10 @@ def sorteio_palavra():
     palavra_secreta = palavras[numero].upper()
     return palavra_secreta
 
+# Essa função formata o input dos chutes para não receber caractere especial, mais de 1 carectere ou números.
 def formata_chute_input():
     chute = input("Qual letra? ").strip().upper()
-    if len(chute) != 1 and not re.search("^[a-z]*$", chute):
+    if len(chute) != 1:
         return 0
     else:
         return chute
@@ -182,11 +183,13 @@ def jogar():
     letras_erradas = []    #Lista que armazena as letras erradas chutadas pelo jogador.
 
     while (not enforcou and not acertou):
+
         chute = formata_chute_input()
+
+        # Condição que verifica os caracteres de entrada do chute feito pelo usuário.
         while chute == 0:
             print("Digite uma letra válida!!\n")
             chute = formata_chute_input()
-
 
 
         # Condição que verifica se a letra digitada pelo jogador é repetida.

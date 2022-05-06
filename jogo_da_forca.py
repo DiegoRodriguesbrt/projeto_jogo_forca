@@ -1,4 +1,5 @@
 #importando biblioteca para utilizar função random, que será utilizada para sorteio da palavra.
+#importando biblioteca do RegEx para utilizar na formatação do input do usuário.
 import re
 from random import randrange
 

@@ -178,6 +178,8 @@ def jogar():
         return print("Obrigado por jogar!!")
 
     while palavra_secreta == -1:
+        pygame.mixer.music.load("som_letra_repetida.mp3")
+        pygame.mixer.music.play()
         print("Opção inválida!!\n")
         palavra_secreta = sorteio_palavra()
 
@@ -196,12 +198,16 @@ def jogar():
 
         # Condição que verifica os caracteres de entrada do chute feito pelo usuário.
         while chute == 0:
+            pygame.mixer.music.load("som_letra_repetida.mp3")
+            pygame.mixer.music.play()
             print("Digite uma letra válida!!\n")
             chute = formata_chute_input()
 
 
         # Condição que verifica se a letra digitada pelo jogador é repetida.
         while chute in letras_certas or chute in letras_erradas:
+            pygame.mixer.music.load("som_letra_repetida.mp3")
+            pygame.mixer.music.play()
             print("\nLetra repetida! Digite outra.")
             chute = input("Qual letra? ").strip().upper()
 

@@ -1,7 +1,9 @@
 #importando biblioteca para utilizar função random, que será utilizada para sorteio da palavra.
 #importando biblioteca do RegEx para utilizar na formatação do input do usuário.
+#importando biblioteca pygame para fazer os efeitos sonoros do jogo.
 import re
 from random import randrange
+import pygame
 
 #Método de abertura ou cabeçalho do jogo
 def mensagem_abertura():
@@ -134,11 +136,15 @@ def desenha_forca(tentativas):
 
 # Método responsável por imprimir na tela uma mensagem de vitória.
 def imprime_mensagem_vencedor():
+    pygame.mixer.music.load("som_ganhou.mp3")
+    pygame.mixer.music.play()
     print("Você ganhou, parabéns :D")
 
 
 # Método que imprime na tela uma mensagem caso o jogador não vença o jogo.
 def imprime_mensagem_perdedor(palavra_secreta):
+    pygame.mixer.music.load("som_perdeu.mp3")
+    pygame.mixer.music.play()
     print("Infelizmente você perdeu :(")
     print("A palavra era {}".format(palavra_secreta))
 
@@ -164,6 +170,7 @@ def mensagem_jogar_novamente():
 
 # Método que efetivamente da início ao jogo, em que as funções acima serão utilizadas e implementadas.
 def jogar():
+    pygame.init()
     mensagem_abertura()
     palavra_secreta = sorteio_palavra()
 
@@ -201,8 +208,12 @@ def jogar():
         if chute in palavra_secreta:
             chute_correto(chute, letras_sorteio, palavra_secreta)
             letras_certas.append(chute)
+            pygame.mixer.music.load("som_acertou.mp3")
+            pygame.mixer.music.play()
 
         else:
+            pygame.mixer.music.load("som_errou.mp3")
+            pygame.mixer.music.play()
             tentativas += 1
             desenha_forca(tentativas)
             letras_erradas.append(chute)

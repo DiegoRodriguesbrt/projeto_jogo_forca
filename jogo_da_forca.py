@@ -1,11 +1,17 @@
 #importando biblioteca para utilizar função random, que será utilizada para sorteio da palavra.
 #importando biblioteca do RegEx para utilizar na formatação do input do usuário.
 #importando biblioteca pygame para fazer os efeitos sonoros do jogo.
+#importando biblioteca os para limpar tela do console/terminal, não funciona na IDE.
 import re
 from random import randrange
 import pygame
+import os
 
-#Método de abertura ou cabeçalho do jogo
+#Método que limpa a tela do console/terminal.
+def limpa_tela():
+    os.system('cls')
+
+#Método de abertura ou cabeçalho do jogo.
 def mensagem_abertura():
     print(20*">" + 11*" " + "UNIESP" + 11*" " + 20*"<" + "\n"
           "#" + 21*" " + "INTRODUÇÃO A PROGRAMAÇÃO" + 21*" " + "#\n"
@@ -64,7 +70,7 @@ def sorteio_palavra():
 # Essa função formata o input dos chutes para não receber caractere especial, mais de 1 carectere ou números.
 def formata_chute_input():
     chute = input("Qual letra? ").strip().upper()
-    if len(chute) != 1 or re.match("\d",chute) or not re.match("[a-zA-Z]",chute):
+    if len(chute) != 1 or re.match("\d",chute) or not re.match("[a-zA-ZçÇ]",chute):
         return 0
     else:
         return chute
@@ -154,9 +160,7 @@ def mensagem_jogar_novamente():
     jogar_novamente = (input("Você gostaria de jogar novamente? [S/N] ").strip().upper())
 
     if (jogar_novamente == "S" or jogar_novamente == "SIM"):
-        print("\n ")
-        print("\n ")
-        print("\n ")
+        limpa_tela()
         if (__name__ == "__main__"):
             jogar()
 

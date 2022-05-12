@@ -1,39 +1,41 @@
-#importando biblioteca para utilizar função random, que será utilizada para sorteio da palavra.
-#importando biblioteca do RegEx para utilizar na formatação do input do usuário.
-#importando biblioteca pygame para fazer os efeitos sonoros do jogo.
-#importando biblioteca os para limpar tela do console/terminal, não funciona na IDE.
+# importando biblioteca para utilizar função random, que será utilizada para sorteio da palavra.
+# importando biblioteca do RegEx para utilizar na formatação do input do usuário.
+# importando biblioteca pygame para fazer os efeitos sonoros do jogo.
+# importando biblioteca os para limpar tela do console/terminal, não funciona na IDE.
 import re
 from random import randrange
 import pygame
 import os
 
-#Método que limpa a tela do console/terminal.
+
+# Método que limpa a tela do console/terminal.
 def limpa_tela():
     os.system('cls')
 
-#Método de abertura ou cabeçalho do jogo.
+
+# Método de abertura ou cabeçalho do jogo.
 def mensagem_abertura():
-    print(20*">" + 11*" " + "UNIESP" + 11*" " + 20*"<" + "\n"
-          "#" + 21*" " + "INTRODUÇÃO A PROGRAMAÇÃO" + 21*" " + "#\n"
-          "#" + 66*" " + "#")
-    print("#" + 28*" " + "CATEGORIA" + 29*" " + "#")
-    print("#" + 66*" " + "#")
-    print("#" + 7*" " + "1 - FRUTA" + 50*" " + "#")
-    print("#" + 7*" " + "2 - CARRO" + 50*" " + "#")
-    print("#" + 7*" " + "0 - SAIR" + 51*" " + "#")
-    print("#" + 66*" " + "#")
-    print("#  Grupo:" + 58*" " + "#")
+    print(20 * ">" + 11 * " " + "UNIESP" + 11 * " " + 20 * "<" + "\n"
+      "#" + 21 * " " + "INTRODUÇÃO A PROGRAMAÇÃO" + 21 * " " + "#\n"
+      "#" + 66 * " " + "#")
+    print("#" + 28 * " " + "CATEGORIA" + 29 * " " + "#")
+    print("#" + 66 * " " + "#")
+    print("#" + 7 * " " + "1 - FRUTA" + 50 * " " + "#")
+    print("#" + 7 * " " + "2 - CARRO" + 50 * " " + "#")
+    print("#" + 7 * " " + "0 - SAIR" + 51 * " " + "#")
+    print("#" + 66 * " " + "#")
+    print("#  Grupo:" + 58 * " " + "#")
     print("#  Diego Rodrigues de Brito - 2022111510080@iesp.edu.br            #")
     print("#  Gabriel Viana - 2022111510007@iesp.edu.br                       #")
     print("#  Mateus Lemos - 2022111510023@iesp.edu.br                        #")
     print("#  Maria Susete de Lima - 2022111510009@iesp.edu.br                #")
     print("#  Bruno Falcão Feitosa Massa Filho - 2022110220019@iesp.edu.br    #")
     print("#  Maria de Fátima Souza Moreira - 2022111510049@iesp.edu.br       #")
-    print("#" + 66*" " + "#")
-    print(68*"#" + "\n")
+    print("#" + 66 * " " + "#")
+    print(68 * "#" + "\n")
 
 
-#Função responsável por abrir e sortear a palavra dentro do arquivo.txt que será utilizada no jogo.
+# Função responsável por abrir e sortear a palavra dentro do arquivo.txt que será utilizada no jogo.
 def sorteio_palavra():
     palavras = []
     categoria = input("Escolha uma das categorias: ").strip()
@@ -65,12 +67,19 @@ def sorteio_palavra():
 
     numero = randrange(0, len(palavras))
     palavra_secreta = palavras[numero].upper()
+    informa_categoria = categoria
+    limpa_tela()
+    if informa_categoria == "1":
+        print("Você selecionou a Categoria FRUTAS!\n")
+    elif informa_categoria == "2":
+        print("Você selecionou a Categoria CARROS!\n")
     return palavra_secreta
+
 
 # Essa função formata o input dos chutes para não receber caractere especial, mais de 1 carectere ou números.
 def formata_chute_input():
-    chute = input("Qual letra? ").strip().upper()
-    if len(chute) != 1 or re.match("\d",chute) or not re.match("[a-zA-ZçÇãÃêÊ]",chute):
+    chute = input("\nQual letra? ").strip().upper()
+    if len(chute) != 1 or re.match("\d", chute) or not re.match("[a-zA-ZçÇãÃêÊ]", chute):
         return 0
     else:
         return chute
@@ -86,7 +95,7 @@ def inicializa_letras_acertadas(palavra):
 # Se essa letra realmente pertencer a palavra, então ela não estará mais oculta para o jogador,
 # já aparecendo na posição correta da palavra. Por exemplo:
 # chute: a   ->    ['_', 'a', '_', 'a']
-def chute_correto(chute,letras_acertadas,palavra_secreta):
+def chute_correto(chute, letras_acertadas, palavra_secreta):
     index = 0
     for letra in palavra_secreta:
         if (chute.upper() == letra.upper()):
@@ -99,38 +108,37 @@ def desenha_forca(tentativas):
     print("  _______     ")
     print(" |/      |    ")
 
-    if(tentativas == 1):
+    if tentativas == 1:
         print(" |      (_)   ")
         print(" |            ")
         print(" |            ")
         print(" |            ")
 
-    if(tentativas == 2):
+    if tentativas == 2:
         print(" |      (_)   ")
         print(" |       |    ")
         print(" |       |    ")
         print(" |            ")
 
-    if(tentativas == 3):
+    if tentativas == 3:
         print(" |      (_)   ")
         print(" |      \|    ")
         print(" |       |    ")
         print(" |            ")
 
-    if(tentativas == 4):
+    if tentativas == 4:
         print(" |      (_)   ")
         print(" |      \|/   ")
         print(" |       |    ")
         print(" |            ")
 
-
-    if(tentativas == 5):
+    if tentativas == 5:
         print(" |      (_)   ")
         print(" |      \|/   ")
         print(" |       |    ")
         print(" |      /     ")
 
-    if (tentativas == 6):
+    if tentativas == 6:
         print(" |      (_)   ")
         print(" |      \|/   ")
         print(" |       |    ")
@@ -159,12 +167,12 @@ def imprime_mensagem_perdedor(palavra_secreta):
 def mensagem_jogar_novamente():
     jogar_novamente = (input("Você gostaria de jogar novamente? [S/N] ").strip().upper())
 
-    if (jogar_novamente == "S" or jogar_novamente == "SIM"):
+    if jogar_novamente == "S" or jogar_novamente == "SIM":
         limpa_tela()
-        if (__name__ == "__main__"):
+        if __name__ == "__main__":
             jogar()
 
-    elif (jogar_novamente == "N" or jogar_novamente == "NÃO" or jogar_novamente == "NAO"):
+    elif jogar_novamente == "N" or jogar_novamente == "NÃO" or jogar_novamente == "NAO":
         print("Obrigado por jogar!!")
 
     else:
@@ -175,10 +183,9 @@ def mensagem_jogar_novamente():
 # Método que efetivamente da início ao jogo, em que as funções acima serão utilizadas e implementadas.
 def jogar():
     pygame.init()
-    pygame.mixer.music.pause() #método para pausar música quando o jogador clica em jogar novamente rapidamente.
+    pygame.mixer.music.pause()  # método para pausar música quando o jogador clica em jogar novamente rapidamente.
     mensagem_abertura()
     palavra_secreta = sorteio_palavra()
-
 
     while palavra_secreta == -1:
         pygame.mixer.music.load("som_letra_repetida.mp3")
@@ -192,10 +199,10 @@ def jogar():
     enforcou = False
     acertou = False
     tentativas = 0
-    letras_certas = []     #Lista que armazena as letras certas adivinhadas pelo jogador.
-    letras_erradas = []    #Lista que armazena as letras erradas chutadas pelo jogador.
+    letras_certas = []  # Lista que armazena as letras certas adivinhadas pelo jogador.
+    letras_erradas = []  # Lista que armazena as letras erradas chutadas pelo jogador.
 
-    while (not enforcou and not acertou):
+    while not enforcou and not acertou:
 
         chute = formata_chute_input()
 
@@ -205,7 +212,6 @@ def jogar():
             pygame.mixer.music.play()
             print("Digite uma letra válida!!\n")
             chute = formata_chute_input()
-
 
         # Condição que verifica se a letra digitada pelo jogador é repetida.
         while chute in letras_certas or chute in letras_erradas:
@@ -234,7 +240,7 @@ def jogar():
         print(letras_sorteio)
         print()
 
-        #Parte e laço que informam letras erradas e acertadas ao usuário
+        # Parte e laço que informam letras erradas e acertadas ao usuário
         print("Letras informadas:")
         print("Corretas: ", end=" ")
 
@@ -254,9 +260,9 @@ def jogar():
                 print("{}".format(letras_erradas[i]), end=", ")
 
         print("\n")
-        print(68*"-")
+        print(68 * "-")
 
-    if(acertou):
+    if acertou:
         imprime_mensagem_vencedor()
 
     else:
@@ -264,7 +270,7 @@ def jogar():
 
     mensagem_jogar_novamente()
 
-# Condição para método jogar como main e iniciar
-if (__name__ == "__main__"):
-    jogar()
 
+# Condição para método jogar como main e iniciar
+if __name__ == "__main__":
+    jogar()

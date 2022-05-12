@@ -58,7 +58,7 @@ def sorteio_palavra():
         arquivo.close()
 
     elif categoria == "0":
-        return "sair"
+        return exit()
 
     else:
         return -1
@@ -70,7 +70,7 @@ def sorteio_palavra():
 # Essa função formata o input dos chutes para não receber caractere especial, mais de 1 carectere ou números.
 def formata_chute_input():
     chute = input("Qual letra? ").strip().upper()
-    if len(chute) != 1 or re.match("\d",chute) or not re.match("[a-zA-ZçÇ]",chute):
+    if len(chute) != 1 or re.match("\d",chute) or not re.match("[a-zA-ZçÇãÃêÊ]",chute):
         return 0
     else:
         return chute
@@ -175,11 +175,10 @@ def mensagem_jogar_novamente():
 # Método que efetivamente da início ao jogo, em que as funções acima serão utilizadas e implementadas.
 def jogar():
     pygame.init()
+    pygame.mixer.music.pause() #método para pausar música quando o jogador clica em jogar novamente rapidamente.
     mensagem_abertura()
     palavra_secreta = sorteio_palavra()
 
-    if palavra_secreta == "sair":
-        return print("Obrigado por jogar!!")
 
     while palavra_secreta == -1:
         pygame.mixer.music.load("som_letra_repetida.mp3")

@@ -21,8 +21,8 @@ def mensagem_abertura():
                                                                                                                           "#" + 66 * " " + "#")
     print("#" + 28 * " " + "CATEGORIA" + 29 * " " + "#")
     print("#" + 66 * " " + "#")
-    print("#" + 7 * " " + "1 - FRUTA" + 50 * " " + "#")
-    print("#" + 7 * " " + "2 - CARRO" + 50 * " " + "#")
+    print("#" + 7 * " " + "1 - FRUTAS" + 49 * " " + "#")
+    print("#" + 7 * " " + "2 - CARROS" + 49 * " " + "#")
     print("#" + 7 * " " + "0 - SAIR" + 51 * " " + "#")
     print("#" + 66 * " " + "#")
     print("#  Grupo:" + 58 * " " + "#")
@@ -45,6 +45,8 @@ def sorteio_palavra():
 
     if categoria == "1":
         arquivo = open("frutas.txt", "r")
+        pygame.mixer.music.load("som_categoria_frutas.mp3")
+        pygame.mixer.music.play()
 
         for linha in arquivo:
             linha = linha.strip()
@@ -54,6 +56,8 @@ def sorteio_palavra():
 
     elif categoria == "2":
         arquivo = open("carros.txt", "r")
+        pygame.mixer.music.load("som_categoria_carros.mp3")
+        pygame.mixer.music.play()
 
         for linha in arquivo:
             linha = linha.strip()
@@ -80,6 +84,7 @@ def sorteio_palavra():
 
 # Essa função formata o input dos chutes para não receber caractere especial, mais de 1 carectere ou números;
 def formata_chute_input():
+    time.sleep(1)
     chute = input("\nQual letra? ").strip().upper()
     if len(chute) != 1 or not re.match("[a-zA-ZçÇãÃêÊ]", chute):
         return 0

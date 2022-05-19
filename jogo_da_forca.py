@@ -86,7 +86,7 @@ def sorteio_palavra():
 def formata_chute_input():
     time.sleep(1)
     chute = input("\nQual letra? ").strip().upper()
-    if len(chute) != 1 or not re.match("[a-zA-ZçÇãÃêÊ]", chute):
+    if len(chute) != 1 or not re.match("[a-zA-ZçÇ]", chute):
         return 0
     else:
         return chute

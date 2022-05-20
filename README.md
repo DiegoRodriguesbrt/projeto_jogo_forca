@@ -25,7 +25,7 @@ Bruno Feitosa - <a href="https://www.linkedin.com/in/bruno-feitosa-1437b5224" ta
 
 Susete Soares - <a href="https://www.linkedin.com/in/susete-soares-99844859/" target="_blank"><img src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white" target="_blank"></a>
 
-Fátima Moreira
+Fátima Moreira - <a href="https://www.linkedin.com/in/maria-moreira-966b9211a/" target="_blank"><img src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white" target="_blank"></a>
 
 
 
